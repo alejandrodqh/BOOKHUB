@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#163a70" />
+  <meta name="description" content="BOOKHUB: compra materiales escolares a distancia y envía tu lista escolar." />
+  <title>BOOKHUB | Materiales escolares</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="BOOKHUB inicio">
+      <span class="brand-mark">B</span>
+      <span>BOOK<span>HUB</span><small>Materiales escolares</small></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#enviar-lista">Enviar lista</a>
+      <a href="#como-funciona">Cómo funciona</a>
+    </nav>
+
+    <div class="top-actions">
+      <button class="button button-light button-small" id="open-auth" type="button">Iniciar sesión</button>
+      <button class="icon-button" id="open-cart" aria-label="Abrir carrito">
+        <span aria-hidden="true">🛒</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="button button-primary button-small" id="go-catalog">Comprar ahora</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> Todo listo para aprender</span>
+        <h1>Tu lista escolar,<br /><span>sin complicaciones.</span></h1>
+        <p>Encuentra tus útiles, envía la lista del colegio y revisa el costo antes de pagar. Haz tu pedido desde donde estés.</p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#catalogo">Explorar materiales <span>→</span></a>
+          <a class="button button-light" href="#enviar-lista">Enviar mi lista</a>
+        </div>
+        <div class="hero-notes">
+          <span><span class="check-mark">✓</span> Compra desde tu celular</span>
+          <span><span class="check-mark">✓</span> Pago por QR</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Materiales escolares">
+        <div class="hero-blob"></div>
+        <div class="floating-note note-top"><span class="note-icon">✓</span><span><b>Tu pedido</b><small>En pocos pasos</small></span></div>
+        <div class="school-illustration">
+          <div class="pencil pencil-yellow"></div>
+          <div class="pencil pencil-blue"></div>
+          <div class="notebook">
+            <div class="notebook-binding"></div>
+            <div class="notebook-lines"></div>
+            <span>¡A aprender!</span>
+          </div>
+          <div class="ruler"></div>
+          <div class="small-book book-one"></div>
+          <div class="small-book book-two"></div>
+          <div class="scissors">✂</div>
+          <div class="star star-one">✦</div>
+          <div class="star star-two">✦</div>
+        </div>
+        <div class="floating-note note-bottom"><span class="qr-mini">▦</span><span><b>Pago por QR</b><small>Simple y práctico</small></span></div>
+      </div>
+    </section>
+
+    <section class="trust-strip section-wrap">
+      <div><span class="trust-icon">⌕</span><span><b>Busca fácilmente</b><small>Encuentra tus materiales</small></span></div>
+      <div><span class="trust-icon">▤</span><span><b>Envía tu lista</b><small>Foto o documento</small></span></div>
+      <div><span class="trust-icon">◷</span><span><b>Conoce el tiempo</b><small>Estimación de preparación</small></span></div>
+      <div><span class="trust-icon">▦</span><span><b>Paga por QR</b><small>Antes de confirmar el pago</small></span></div>
+    </section>
+
+    <section class="section-wrap catalog-section" id="catalogo">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">NUESTRO CATÁLOGO</span>
+          <h2>Materiales para cada día</h2>
+          <p>Elige lo que necesitas y agrégalo a tu pedido.</p>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="search-products" type="search" placeholder="Buscar material..." autocomplete="off" />
+        </label>
+      </div>
+
+      <div class="category-tabs" id="category-tabs" aria-label="Categorías">
+        <button class="category-tab active" data-category="Todos">Todos</button>
+        <button class="category-tab" data-category="Cuadernos">Cuadernos</button>
+        <button class="category-tab" data-category="Escritura">Escritura</button>
+        <button class="category-tab" data-category="Arte">Arte y colores</button>
+        <button class="category-tab" data-category="Organización">Organización</button>
+        <button class="category-tab" data-category="Otros">Otros</button>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+      <div class="empty-state hidden" id="empty-products">No encontramos materiales con esa búsqueda.</div>
+    </section>
+
+    <section class="list-banner section-wrap" id="enviar-lista">
+      <div class="list-banner-copy">
+        <span class="eyebrow eyebrow-light">¿TIENES UNA LISTA DEL COLEGIO?</span>
+        <h2>Envíanos la lista.<br />Nosotros la revisamos.</h2>
+        <p>Sube una foto o un PDF con los materiales que necesitas. El pedido se revisará antes de mostrarte el costo definitivo.</p>
+        <ul>
+          <li>✓ No necesitas buscar cada producto</li>
+          <li>✓ La lista solo estará disponible para trabajadores autorizados en la versión conectada</li>
+          <li>✓ Recibirás un resumen del pedido</li>
+        </ul>
+      </div>
+
+      <form class="upload-card" id="list-form">
+        <div class="upload-icon">↑</div>
+        <h3>Enviar lista escolar</h3>
+        <p>Selecciona una foto o un documento PDF.</p>
+        <label class="file-drop" for="school-list-file">
+          <span class="file-symbol">▧</span>
+          <strong id="file-label">Elegir archivo</strong>
+          <small>JPG, PNG o PDF · Máximo 8 MB</small>
+          <input id="school-list-file" type="file" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" />
+        </label>
+
+        <label class="field-label" for="list-customer-name">Tu nombre</label>
+        <input class="text-field" id="list-customer-name" type="text" placeholder="Nombre completo" maxlength="90" required />
+
+        <label class="field-label" for="list-customer-phone">Número de contacto</label>
+        <input class="text-field" id="list-customer-phone" type="tel" placeholder="Ej. 70000000" maxlength="20" required />
+
+        <label class="field-label" for="list-notes">Detalles adicionales (opcional)</label>
+        <textarea class="text-field textarea-field" id="list-notes" rows="2" placeholder="Curso, colores, marcas u otra indicación"></textarea>
+
+        <button class="button button-primary button-full" type="submit">Enviar lista <span>→</span></button>
+        <p class="form-footnote">Prototipo: el archivo se procesa solo en esta demostración y no se envía a un servidor.</p>
+      </form>
+    </section>
+
+    <section class="section-wrap how-section" id="como-funciona">
+      <div class="section-heading centered-heading">
+        <div>
+          <span class="eyebrow">FÁCIL Y RÁPIDO</span>
+          <h2>Compra en cuatro pasos</h2>
+          <p>Todo lo importante, sin pasos innecesarios.</p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">01</span><div class="step-icon">⌕</div><h3>Elige tus materiales</h3><p>Busca productos en el catálogo o envía directamente tu lista escolar.</p></article>
+        <article class="step-card"><span class="step-number">02</span><div class="step-icon">▤</div><h3>Revisa el pedido</h3><p>Consulta las cantidades, el costo y el tiempo estimado de preparación.</p></article>
+        <article class="step-card"><span class="step-number">03</span><div class="step-icon">▦</div><h3>Paga mediante QR</h3><p>Escanea el QR válido del negocio y usa la referencia de tu pedido.</p></article>
+        <article class="step-card"><span class="step-number">04</span><div class="step-icon">✓</div><h3>Consulta el estado</h3><p>Guarda tu número de pedido para consultar el resumen de tu compra.</p></article>
+      </div>
+    </section>
+
+    <section class="section-wrap lookup-section" id="consultar-pedido">
+      <div class="lookup-card">
+        <div>
+          <span class="eyebrow">SEGUIMIENTO</span>
+          <h2>¿Ya hiciste un pedido?</h2>
+          <p>Escribe el número de pedido para consultar su información en esta demostración.</p>
+        </div>
+        <form id="lookup-form" class="lookup-form">
+          <input class="text-field" id="lookup-order-id" type="text" placeholder="Ej. PG-123456" required />
+          <button class="button button-primary" type="submit">Consultar</button>
+        </form>
+      </div>
+      <div id="lookup-result" class="lookup-result hidden"></div>
+    </section>
+
+    <section class="admin-section section-wrap" id="admin">
+      <details class="admin-disclosure">
+        <summary><span class="admin-summary-icon">▦</span><span><b>Vista administrativa de demostración</b><small>Ventas, inventario y control contable · Datos de ejemplo</small></span><span class="summary-arrow">⌄</span></summary>
+        <div class="admin-content">
+          <div class="demo-warning">Panel demostrativo: las cifras y pedidos son ejemplos locales, no ventas reales.</div>
+          <div class="admin-metrics">
+            <article class="metric-card"><span>Ventas de hoy (demo)</span><strong id="admin-today">Bs 0,00</strong><small>Pedidos pagados de ejemplo</small></article>
+            <article class="metric-card"><span>Ventas del mes (demo)</span><strong id="admin-month">Bs 0,00</strong><small>Registro demostrativo</small></article>
+            <article class="metric-card"><span>Pedidos creados aquí</span><strong id="admin-orders">0</strong><small>En este navegador</small></article>
+            <article class="metric-card"><span>Productos en catálogo</span><strong id="admin-products">0</strong><small>Inventario de ejemplo</small></article>
+          </div>
+          <div class="admin-columns">
+            <div class="admin-table-wrap"><h3>Inventario de ejemplo</h3><div id="inventory-table"></div></div>
+            <div class="admin-table-wrap"><h3>Últimos pedidos de esta sesión</h3><div id="admin-order-list"></div></div>
+          </div>
+          <div class="accounting-note"><b>Nota contable:</b> las ventas no equivalen automáticamente a ganancias. Para estimar el resultado se deben registrar también los costos de compra y los gastos del negocio.</div>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="brand brand-footer" href="#"><span class="brand-mark">B</span><span>BOOK<span>HUB</span><small>Materiales escolares</small></span></a>
+      <p>Compra tus materiales escolares de una forma más sencilla.</p>
+      <span class="footer-copy">© 2026 BOOKHUB · Prototipo académico</span>
+    </div>
+  </footer>
+
+  <div class="overlay hidden" id="overlay"></div>
+
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="drawer-header"><div><span class="eyebrow">TU PEDIDO</span><h2>Carrito de compras</h2></div><button class="close-button" id="close-cart" aria-label="Cerrar carrito">×</button></div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><div class="empty-bag">🛍</div><h3>Tu carrito está vacío</h3><p>Agrega los materiales que necesitas para continuar.</p><button class="button button-light" id="continue-shopping">Ver materiales</button></div>
+    <div class="cart-bottom" id="cart-bottom">
+      <div class="cart-subtotal"><span>Total de materiales</span><strong id="cart-total">Bs 0,00</strong></div>
+      <p class="drawer-note">El costo final dependerá de la disponibilidad de los productos.</p>
+      <button class="button button-primary button-full" id="continue-checkout">Continuar pedido <span>→</span></button>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop hidden" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <div class="modal-card modal-wide">
+      <button class="close-button modal-close" data-close-modal aria-label="Cerrar">×</button>
+      <div class="modal-step-label">PASO FINAL · REVISIÓN Y PAGO</div>
+      <h2 id="checkout-title">Confirma tu pedido</h2>
+      <p class="modal-intro">Revisa tus datos y el resumen antes de continuar al pago por QR.</p>
+      <form id="checkout-form">
+        <div class="checkout-grid">
+          <div class="checkout-fields">
+            <label class="field-label" for="customer-name">Nombre completo</label>
+            <input class="text-field" id="customer-name" required maxlength="90" placeholder="Tu nombre" />
+            <label class="field-label" for="customer-phone">Número de contacto</label>
+            <input class="text-field" id="customer-phone" required maxlength="20" type="tel" placeholder="Tu número de celular" />
+            <label class="field-label" for="delivery-method">Forma de entrega</label>
+            <select class="text-field" id="delivery-method" required>
+              <option value="Recoger en el establecimiento">Recoger en el establecimiento</option>
+              <option value="Coordinar entrega">Coordinar entrega (si está disponible)</option>
+            </select>
+            <label class="field-label" for="checkout-notes">Indicaciones (opcional)</label>
+            <textarea class="text-field textarea-field" id="checkout-notes" rows="2" placeholder="Detalles de tu pedido"></textarea>
+          </div>
+          <div class="checkout-summary">
+            <h3>Resumen</h3>
+            <div id="checkout-summary-items"></div>
+            <div class="summary-total"><span>Total estimado</span><strong id="checkout-total">Bs 0,00</strong></div>
+            <div class="estimate-box"><span>◷</span><div><b>Tiempo estimado</b><p id="prep-estimate">Se calculará según tu pedido.</p></div></div>
+          </div>
+        </div>
+        <p class="modal-error hidden" id="checkout-error"></p>
+        <button class="button button-primary button-full" type="submit">Crear pedido y ver QR <span>→</span></button>
+        <p class="form-footnote">El pedido y el tiempo son demostrativos. No se realiza un cobro real en esta versión.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+    <div class="modal-card payment-card">
+      <button class="close-button modal-close" data-close-modal aria-label="Cerrar">×</button>
+      <div class="payment-icon">▦</div>
+      <span class="eyebrow">PEDIDO CREADO</span>
+      <h2 id="payment-title">Tu pedido está registrado</h2>
+      <p class="modal-intro">Guarda tu número de pedido. Aquí se muestra el flujo de pago de demostración.</p>
+      <div class="order-reference"><span>Número de pedido</span><strong id="payment-order-id">PG-000000</strong><button class="copy-button" id="copy-order-id" type="button">Copiar</button></div>
+      <div class="payment-total"><span>Total del pedido</span><strong id="payment-total">Bs 0,00</strong></div>
+      <div class="qr-placeholder"><div class="qr-pattern" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><b>QR de demostración</b><small>No válido para pagar</small></div>
+      <div class="payment-instructions"><b>Para habilitar pagos reales</b><p>Reemplaza este espacio con el QR válido del negocio y configura la verificación del pago. No uses este QR de muestra para transferir dinero.</p></div>
+      <div class="estimate-box"><span>◷</span><div><b>Tiempo estimado de preparación</b><p id="payment-prep-time">Por calcular</p></div></div>
+      <div class="status-track"><div class="status-step active"><span>1</span><small>Pedido<br />recibido</small></div><div class="status-line"></div><div class="status-step"><span>2</span><small>Pago<br />verificado</small></div><div class="status-line"></div><div class="status-step"><span>3</span><small>Listo para<br />entrega</small></div></div>
+      <button class="button button-primary button-full" id="finish-order" type="button">Entendido</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal-card auth-card">
+      <button class="close-button modal-close" id="close-auth" type="button" aria-label="Cerrar">×</button>
+      <div class="auth-brand"><span class="brand-mark">B</span><span>BOOK<span>HUB</span></span></div>
+      <span class="modal-step-label">TU ESPACIO ESCOLAR</span>
+      <h2 id="auth-title">Bienvenido a BOOKHUB</h2>
+      <p class="modal-intro" id="auth-intro">Inicia sesión para continuar con tus compras de materiales escolares.</p>
+      <div class="auth-tabs" role="tablist" aria-label="Acceso a la cuenta">
+        <button class="auth-tab active" type="button" data-auth-mode="login">Iniciar sesión</button>
+        <button class="auth-tab" type="button" data-auth-mode="register">Crear cuenta</button>
+      </div>
+      <form id="auth-form">
+        <div id="auth-name-wrap" class="hidden">
+          <label class="field-label" for="auth-name">Nombre completo</label>
+          <input class="text-field" id="auth-name" name="name" type="text" autocomplete="name" placeholder="Escribe tu nombre" />
+        </div>
+        <label class="field-label" for="auth-email">Correo electrónico</label>
+        <input class="text-field" id="auth-email" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required />
+        <label class="field-label" for="auth-password">Contraseña</label>
+        <input class="text-field" id="auth-password" name="password" type="password" autocomplete="current-password" minlength="4" placeholder="Ingresa tu contraseña" required />
+        <div id="auth-confirm-wrap" class="hidden">
+          <label class="field-label" for="auth-confirm-password">Confirmar contraseña</label>
+          <input class="text-field" id="auth-confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="4" placeholder="Repite la contraseña" />
+        </div>
+        <p id="auth-message" class="auth-message hidden" role="status"></p>
+        <button class="button button-primary button-full" id="auth-submit" type="submit">Iniciar sesión</button>
+        <p class="form-footnote auth-footnote">Prototipo de demostración: las cuentas se guardan solo durante esta sesión.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
