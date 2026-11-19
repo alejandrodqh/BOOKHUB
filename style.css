@@ -427,3 +427,192 @@ button { cursor: pointer; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
 :focus-visible { outline: 3px solid #80b8b0; outline-offset: 3px; }
+/* ==============================================================
+   BOOKHUB 2.0: acceso, secciones separadas, panel de inventario
+   Mantiene la paleta original azul petróleo y verde suave.
+   ============================================================== */
+:root { --navy:#233b55; --navy-deep:#172b40; --blue:#397a83; --page:#e6ecef; }
+body { min-height: 100vh; }
+button { font-family: inherit; }
+.access-screen { min-height: 100vh; display: grid; grid-template-columns: 52% 48%; background: #edf2f3; }
+.access-art { display:flex; align-items:center; justify-content:center; padding: 54px 7vw; background: radial-gradient(circle at 75% 20%,#527f85 0,#2e5966 36%,#193448 88%); color:#fff; }
+.access-art-inner { width: min(530px,100%); }
+.welcome-logo { display:flex; align-items:center;gap:12px;font:800 25px Manrope,sans-serif;letter-spacing:-.5px; }
+.welcome-logo .brand-mark { background:#7ebbb0;color:#153248;width:45px;height:45px;font-size:24px; }
+.welcome-logo > span:last-child > span { color:#a6d8d0; }
+.access-illustration { position:relative;display:flex;align-items:center;justify-content:center;gap:18px;margin:32px auto 36px;padding:30px 10px;min-height:205px;border:1px solid #ffffff24;border-radius:28px;background:#ffffff0a;box-shadow:0 25px 60px #0a203a25; }
+.access-illustration span { display:block;font-size:clamp(62px,8vw,112px);filter:drop-shadow(0 15px 10px #142b433b);transition:transform .2s; }
+.access-illustration span:nth-child(2) { transform:rotate(-22deg) translateY(15px);font-size:80px; }
+.access-illustration span:nth-child(3) { transform:rotate(12deg) translateY(12px);font-size:72px; }
+.access-art h1 { font:800 clamp(30px,3.5vw,47px)/1.16 Manrope,sans-serif;letter-spacing:-1.5px;margin:12px 0 18px; }
+.access-art h1 em { font-style:normal;color:#a6d8d0; }
+.access-art p:not(.eyebrow) { max-width:460px;color:#d4e5e9;font-size:14px;line-height:1.8; }
+.welcome-features { display:flex;flex-wrap:wrap;gap:14px;margin-top:28px; }
+.welcome-features span { background:#ffffff18;border:1px solid #ffffff20;border-radius:24px;padding:8px 11px;font-size:10px;font-weight:700;color:#e6f4f0; }
+.access-side { display:grid;place-items:center;padding:35px 25px; }
+.access-box { width:min(430px,100%);background:#f7f9fa;border:1px solid #dbe4e7;border-radius:24px;padding:clamp(24px,4vw,40px);box-shadow:0 20px 55px #18344e14; }
+.access-box h2 { color:#172b40;font:800 29px Manrope,sans-serif;margin:10px 0 8px;letter-spacing:-.8px; }
+.form-intro { color:#667789;font-size:13px;margin:0 0 22px; }
+.auth-role-tabs { display:grid;grid-template-columns:1fr 1fr;gap:5px;border-radius:12px;background:#e5edef;padding:5px;margin-bottom:20px; }
+.role-tab { border:0;border-radius:9px;background:transparent;color:#687989;font-size:12px;font-weight:800;padding:12px 10px; }
+.role-tab.active { background:white;color:#244557;box-shadow:0 3px 10px #203c4c14; }
+.login-form label {display:block;color:#506173;font-size:11px;font-weight:800;margin:13px 0 7px;}
+.login-form .button { margin-top:18px; }
+.register-line,.demo-credentials {text-align:center;color:#6c7b89;font-size:11px;margin:17px 0 3px;}
+.register-line button {border:0;background:none;color:#2d6871;font-weight:800;padding:3px;}
+.demo-credentials {color:#477077;}
+.access-note { font-size:10px;line-height:1.65;color:#89949e;margin:22px 0 0;text-align:center; }
+.access-error {background:#fff0f1;color:#9b3a45;border-radius:9px;padding:11px;font-size:11px;margin-top:13px;}
+.brand-button { border:0;background:none;padding:0;cursor:pointer; }
+.main-nav .nav-link { border:0;background:none;color:#d6e0e4;font-size:12px;padding:9px 5px;font-weight:700;position:relative;white-space:nowrap; }
+.main-nav .nav-link.active,.main-nav .nav-link:hover { color:#a6d8d0; }
+.main-nav .nav-link.active::after { content:'';position:absolute;left:5px;right:5px;bottom:1px;height:2px;background:#a6d8d0;border-radius:4px; }
+.header-user { color:#e0e8ed;font-size:11px;font-weight:700;white-space:nowrap;max-width:135px;text-overflow:ellipsis;overflow:hidden; }
+#app-shell { min-height:100vh; }
+.page-screen { min-height:calc(100vh - 160px); }
+.page-content { padding-top:64px;padding-bottom:85px; }
+.page-heading { margin:0 0 29px; }
+.page-heading h1 {font:800 clamp(27px,4vw,37px) Manrope,sans-serif;color:#193449;margin:9px 0 7px;letter-spacing:-.8px;}
+.page-heading p {font-size:13px;color:#6d7f8c;margin:0;max-width:700px;}
+.catalog-section.page-content { padding-block:64px 85px; }
+.catalog-summary {font-size:11px;color:#73818e;margin:-8px 0 22px;}
+.home-promo { margin-top:56px;margin-bottom:75px; }
+.home-promo h2 {font:800 clamp(24px,3vw,32px) Manrope,sans-serif;color:#193449;margin:8px 0;letter-spacing:-.7px;}
+.home-promo p {font-size:13px;color:#667888;}
+.home-category-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px; }
+.home-category { text-align:left;display:flex;flex-direction:column;gap:8px;align-items:flex-start;background:#f6f9f9;border:1px solid #d6e2e5;border-radius:17px;padding:24px;transition:transform .2s,box-shadow .2s; }
+.home-category:hover { transform:translateY(-4px);box-shadow:0 16px 32px #1b345020; }
+.home-category > span {display:grid;place-items:center;font-size:32px;background:#e1eeee;width:60px;height:60px;border-radius:14px;}
+.home-category b {font:800 15px Manrope,sans-serif;color:#1b3b4e;}
+.home-category small {font-size:10px;color:#397a83;font-weight:700;}
+.page-screen .list-banner { margin-top:8px; }
+.guide-cta { display:flex;align-items:center;justify-content:space-between;gap:20px;background:#dce9e9;border-radius:16px;margin-top:35px;padding:23px 28px; }
+.guide-cta h3 {margin:0;color:#1b3b4e;font:800 17px Manrope,sans-serif;}
+.friendly-empty {text-align:center;padding:55px 25px;background:#f6f9f9;border:1px dashed #cbdadb;border-radius:17px;}
+.friendly-empty>span {display:block;font-size:42px;}
+.friendly-empty h3 {font:800 18px Manrope,sans-serif;color:#1b3b4e;margin:12px 0 5px;}
+.friendly-empty p {font-size:12px;color:#697b88;}
+.orders-list { display:grid;gap:14px; }
+.reservation-card { border:1px solid #d8e3e6;border-radius:15px;background:#f9fbfb;padding:20px 22px;box-shadow:0 5px 16px #1b345009; }
+.reservation-top,.reservation-bottom {display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+.reservation-number {font-weight:800;color:#1b3b4e;font-size:12px;overflow-wrap:anywhere;}
+.reservation-date {font-size:10px;color:#8995a0;margin-top:3px;}
+.order-status {padding:6px 10px;border-radius:18px;background:#e3f2ed;color:#2a8067;font-size:10px;font-weight:800;}
+.order-status.cancelled {background:#fff0f0;color:#bb5560;}
+.order-status.delivered {background:#dfeaf9;color:#44648d;}
+.reservation-products {font-size:12px;color:#536879;margin:14px 0;line-height:1.6;}
+.reservation-notes {color:#788898;font-size:11px;}
+.reservation-client {font-size:11px;color:#4e6273;}
+.reservation-bottom {border-top:1px solid #dbe5e7;padding-top:14px;margin-top:13px;}
+.reservation-bottom>strong {color:#193c4b;font-size:15px;}
+.reservation-bottom>span {font-size:11px;color:#73818e;}
+.status-label {display:flex;align-items:center;gap:9px;color:#576d7c;font-size:11px;font-weight:800;}
+.status-label select {width:145px;margin:0;padding:8px 10px;min-height:auto;}
+.admin-main {max-width:1200px;}
+.admin-heading {display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px;}
+.admin-heading h1 {color:#1a334a;margin:7px 0 5px;font:800 clamp(27px,3vw,37px) Manrope,sans-serif;letter-spacing:-1px;}
+.admin-heading p {font-size:12px;color:#677b8a;margin:0;}
+.admin-chip {padding:9px 14px;border-radius:20px;background:#d5eae6;color:#2b706a;font-size:11px;font-weight:800;}
+.admin-metrics-new {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:22px 0 26px;}
+.admin-metrics-new .metric-card { margin:0;background:#f6f9f9;border:1px solid #dbe4e7;border-radius:15px;padding:21px;box-shadow:0 5px 15px #19344909; }
+.admin-metrics-new .metric-card span {font-size:11px;color:#6a7b89;}
+.admin-metrics-new .metric-card strong {display:block;font:800 25px Manrope,sans-serif;color:#19394d;margin:9px 0 2px;}
+.admin-metrics-new .metric-card small {font-size:10px;color:#84919b;}
+.admin-navigation { display:flex;gap:7px;background:#dfe9ea;padding:6px;border-radius:14px;margin-bottom:20px;flex-wrap:wrap; }
+.admin-nav-tab { flex:1;min-width:100px;border:0;border-radius:10px;background:transparent;color:#667b88;font-size:12px;font-weight:800;padding:12px 10px; }
+.admin-nav-tab.active {background:#f9fbfb;color:#265761;box-shadow:0 3px 11px #152f5012;}
+.admin-pane { margin-top:14px; }
+.overview-grid {display:grid;grid-template-columns:1fr 1fr;gap:17px;}
+.admin-box {background:#f9fbfb;border:1px solid #d8e3e6;border-radius:17px;padding:25px;min-width:0;}
+.admin-box h2 {font:800 18px Manrope,sans-serif;color:#1b394f;margin:0 0 18px;}
+.admin-box>p {margin:0 0 17px;}
+.category-summary-row,.recent-row {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #e5ebee;font-size:12px;color:#506374;}
+.category-summary-row:last-child,.recent-row:last-child {border-bottom:0;}
+.category-summary-row strong {color:#1e4252;font-size:11px;white-space:nowrap;}
+.recent-row small {display:block;color:#8796a1;font-size:10px;margin-top:3px;}
+.recent-row>strong {font-size:12px;color:#1e4252;white-space:nowrap;}
+.tip-box {margin-top:18px;padding:15px 18px;color:#386671;background:#dbe9e9;border:1px solid #c6ddda;border-radius:12px;font-size:12px;line-height:1.7;}
+.admin-box-heading {display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:19px;}
+.admin-box-heading h2 {margin:0 0 6px;}
+.admin-box-heading p {margin:0;font-size:12px;color:#738390;}
+.admin-tools {display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;}
+.admin-tools .search-box {width:260px;}
+.admin-tools select {width:190px;height:45px;margin:0;}
+.table-scroll {overflow-x:auto;}
+.admin-table {width:100%;min-width:790px;border-collapse:collapse;}
+.admin-table thead {background:#e8f0f1;}
+.admin-table th {padding:13px 10px;font-size:10px;color:#687c88;text-align:left;}
+.admin-table td {padding:13px 10px;border-bottom:1px solid #e7edef;color:#435868;font-size:12px;}
+.admin-table tbody tr:hover {background:#f0f6f6;}
+.table-product {display:flex;align-items:center;gap:10px;}
+.table-sticker {font-size:21px;display:grid;place-items:center;background:#e6f0f1;border-radius:9px;width:36px;height:36px;flex-shrink:0;}
+.table-product b {color:#1e4252;}
+.inventory-state {background:#dff1e9;color:#2e8060;padding:6px 9px;border-radius:18px;font-size:10px;font-weight:800;white-space:nowrap;}
+.inventory-state.low {background:#fff1d3;color:#9c742b;}
+.inventory-state.out {background:#f9e6e8;color:#b7555a;}
+.table-actions {white-space:nowrap;}
+.table-actions button {border:1px solid #cfdee2;color:#256b72;background:#fff;border-radius:7px;padding:8px 9px;font-size:10px;font-weight:800;margin-right:4px;}
+.table-actions button.danger {color:#b04a5a;}
+#product-modal .modal-card {width:min(100%,490px);}
+.form-grid-two {display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+#product-form .button {margin-top:19px;}
+.muted {color:#718493;font-size:12px;}
+@media (max-width:1120px) {
+  .topbar {padding-inline:20px;gap:10px;}
+  .main-nav {gap:12px;}
+  .main-nav .nav-link {font-size:11px;}
+  .header-user {max-width:100px;}
+}
+@media (max-width:920px) {
+  .access-screen {grid-template-columns:44% 56%;}
+  .access-art {padding:35px 5vw;}
+  .access-illustration {min-height:140px;}
+  .access-illustration span {font-size:58px;}
+  .access-illustration span:nth-child(2),.access-illustration span:nth-child(3) {font-size:49px;}
+  .home-category-grid {grid-template-columns:repeat(3,minmax(0,1fr));}
+  .admin-metrics-new {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .overview-grid {grid-template-columns:1fr;}
+  .topbar {height:auto;min-height:70px;flex-wrap:wrap;padding-block:10px;}
+  .main-nav {order:3;flex-basis:100%;justify-content:center;overflow-x:auto;}
+}
+@media (max-width:700px) {
+  .access-screen {grid-template-columns:1fr;}
+  .access-art {padding:22px 25px;min-height:auto;}
+  .access-art-inner {max-width:440px;}
+  .access-art h1 {font-size:22px;margin:10px 0 6px;}
+  .access-art p:not(.eyebrow),.welcome-features,.access-illustration {display:none;}
+  .welcome-logo {font-size:20px;}
+  .welcome-logo .brand-mark {width:35px;height:35px;font-size:20px;}
+  .access-side {padding:22px 14px 30px;align-items:start;}
+  .access-box {padding:23px 20px;}
+  .access-box h2 {font-size:25px;}
+  .main-nav {display:flex;justify-content:start;padding-bottom:4px;gap:18px;}
+  .main-nav .nav-link {font-size:11px;padding-bottom:10px;}
+  .top-actions {margin-left:auto;}
+  .top-actions #logout-button {display:inline-flex;font-size:10px;padding:9px 10px;}
+  .header-user {max-width:96px;}
+  .home-category-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .home-category {padding:15px;}
+  .home-category b {font-size:13px;}
+  .home-category>span {width:46px;height:46px;font-size:27px;}
+  .page-content {padding-top:39px;padding-bottom:60px;}
+  .catalog-section.page-content {padding-block:39px 55px;}
+  .home-promo {margin-block:35px 55px;}
+  .admin-heading {align-items:flex-start;}
+  .admin-chip {font-size:9px;padding:7px 9px;}
+  .admin-metrics-new {gap:10px;}
+  .admin-metrics-new .metric-card {padding:14px;}
+  .admin-metrics-new .metric-card strong {font-size:21px;}
+  .admin-nav-tab {min-width:calc(50% - 6px);}
+  .admin-box {padding:16px;}
+  .admin-tools .search-box,.admin-tools select {width:100%;}
+  .reservation-card {padding:16px;}
+  .guide-cta {flex-direction:column;align-items:stretch;}
+  .form-grid-two {grid-template-columns:1fr 1fr;gap:8px;}
+}
+@media (max-width:390px) {
+  .header-user {display:none;}
+  .home-category-grid {grid-template-columns:1fr 1fr;}
+  .home-category {padding:12px;}
+  .home-category b {font-size:12px;}
+}
